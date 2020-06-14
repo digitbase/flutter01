@@ -63,9 +63,9 @@ class _IndexPagesState extends State<IndexPages> {
           });
         },
       ),
-      appBar: AppBar(
-        title: Text('Title'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('Title'),
+      // ),
       body: currentPage,
     );
   }
