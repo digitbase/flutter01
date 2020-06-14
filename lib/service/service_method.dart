@@ -4,7 +4,7 @@ import "../config/service_url.dart";
 
 Future getHomePageContext() async {
   try {
-    print('开始获取首页数据。。。。。。');
+    print('servic_method.dar。。。。。。');
     Response response;
     Dio dio = new Dio();
     dio.options.contentType =

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter01/element/swiper.dart';
 import 'package:flutter01/service/service_method.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,13 +16,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    getHomePageContext().then((value) {
-      //print(value.toString());
-      setState(() {
-        selectText = value.toString();
-      });
-    });
-    super.initState();
+    // getHomePageContext().then((value) {
+    //   //print(value.toString());
+    //   setState(() {
+    //     selectText = value.toString();
+    //   });
+    // });
+    // super.initState();
   }
 
   @override
@@ -31,31 +32,22 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('美好人间'),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: textContorl,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10),
-                  labelText: 'nihao',
-                  helperText: "请输入！",
-                ),
-                autofocus: false,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  _choiceAction(context);
-                },
-                child: Text('选择完毕'),
-              ),
-              Container(
-                child: Text(selectText),
-              ),
-            ],
-          ),
-        ),
+      body: FutureBuilder(
+        future: getHomePageContext(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            var data = jsonDecode(snapshot.data);
+            List swiper = (data['data']['slides']);
+            print(swiper);
+            return Column(
+              children: <Widget>[
+                SwiperDiy(swiperDataList: swiper),
+              ],
+            );
+          } else {
+            return Text('error!');
+          }
+        },
       ),
     );
   }
