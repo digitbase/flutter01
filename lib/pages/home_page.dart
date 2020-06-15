@@ -45,6 +45,9 @@ class _HomePageState extends State<HomePage> {
             List navigatorList = (data['data']['category']);
             String leaderImage = data['data']['shopInfo']['leaderImage'];
             String leaderPhone = data['data']['shopInfo']['leaderPhone'];
+            List recommendList = data['data']['recommend'];
+
+            print(recommendList[0].toString());
             return Column(
               children: <Widget>[
                 SwiperDiy(
@@ -57,6 +60,9 @@ class _HomePageState extends State<HomePage> {
                 LeaderPhone(
                   leaderPhone: leaderPhone,
                   leaderImage: leaderImage,
+                ),
+                Recommend(
+                  recommendList: recommendList,
                 ),
               ],
             );
