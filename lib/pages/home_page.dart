@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter01/element/swiper.dart';
 import 'package:flutter01/service/service_method.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,7 +28,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //getHttp();
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+
+    print("设置像素密度：" + ScreenUtil.pixelRatio.toString());
+    print("设置高：" + ScreenUtil.screenHeight.toString());
+    print("设置宽：" + ScreenUtil.screenWidth.toString());
+
     return Scaffold(
       appBar: AppBar(
         title: Text('美好人间'),
@@ -41,7 +47,10 @@ class _HomePageState extends State<HomePage> {
             print(swiper);
             return Column(
               children: <Widget>[
-                SwiperDiy(swiperDataList: swiper),
+                SwiperDiy(
+                  swiperDataList: swiper,
+                  setHight: ScreenUtil().setHeight(275),
+                ),
               ],
             );
           } else {
