@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter01/element/ad_phone.dart';
 import 'package:flutter01/element/lib_element.dart';
 import 'package:flutter01/service/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,8 @@ class _HomePageState extends State<HomePage> {
             var data = jsonDecode(snapshot.data);
             List swiper = (data['data']['slides']);
             List navigatorList = (data['data']['category']);
-            print(swiper);
+            String leaderImage = data['data']['shopInfo']['leaderImage'];
+            String leaderPhone = data['data']['shopInfo']['leaderPhone'];
             return Column(
               children: <Widget>[
                 SwiperDiy(
@@ -51,6 +53,10 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TopNavigator(
                   navigatorList: navigatorList,
+                ),
+                LeaderPhone(
+                  leaderPhone: leaderPhone,
+                  leaderImage: leaderImage,
                 ),
               ],
             );
