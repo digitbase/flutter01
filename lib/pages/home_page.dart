@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter01/element/swiper.dart';
+import 'package:flutter01/element/lib_element.dart';
 import 'package:flutter01/service/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,8 +27,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-
     print("设置像素密度：" + ScreenUtil.pixelRatio.toString());
     print("设置高：" + ScreenUtil.screenHeight.toString());
     print("设置宽：" + ScreenUtil.screenWidth.toString());
@@ -44,12 +41,16 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.hasData) {
             var data = jsonDecode(snapshot.data);
             List swiper = (data['data']['slides']);
+            List navigatorList = (data['data']['category']);
             print(swiper);
             return Column(
               children: <Widget>[
                 SwiperDiy(
                   swiperDataList: swiper,
                   setHight: ScreenUtil().setHeight(275),
+                ),
+                TopNavigator(
+                  navigatorList: navigatorList,
                 ),
               ],
             );

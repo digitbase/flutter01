@@ -48,6 +48,8 @@ class _IndexPagesState extends State<IndexPages> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1),
       //底部菜单
