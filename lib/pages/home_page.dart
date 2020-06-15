@@ -11,20 +11,14 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  bool get wantKeepAlive => true;
   TextEditingController textContorl = TextEditingController();
   String selectText = "你好您选择的是";
 
   @override
-  void initState() {
-    // getHomePageContext().then((value) {
-    //   //print(value.toString());
-    //   setState(() {
-    //     selectText = value.toString();
-    //   });
-    // });
-    // super.initState();
-  }
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {

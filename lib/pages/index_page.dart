@@ -28,7 +28,7 @@ class _IndexPagesState extends State<IndexPages> {
   ];
 
   //新建导航信息 List
-  final List tabBodies = [
+  final List<Widget> tabBodies = [
     HomePage(),
     CategoryPage(),
     CartPage(),
@@ -68,7 +68,15 @@ class _IndexPagesState extends State<IndexPages> {
       // appBar: AppBar(
       //   title: Text('Title'),
       // ),
-      body: currentPage,
+      body: IndexedStack(
+        index: currentIndex,
+        children: <Widget>[
+          HomePage(),
+          CategoryPage(),
+          CartPage(),
+          MemberPage(),
+        ],
+      ),
     );
   }
 }
