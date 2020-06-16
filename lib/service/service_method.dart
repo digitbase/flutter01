@@ -9,8 +9,8 @@ Future getHomePageContext() async {
     Dio dio = new Dio();
     dio.options.contentType =
         ContentType.parse('application/x-www-form-urlencoded').toString();
-    var formData = {'lon': '115.02932', 'lat': '35.76189'};
-    response = await dio.post(servicePath['homePageContent'], data: formData);
+    var data = {'lon': '115.02932', 'lat': '35.76189'};
+    response = await dio.post(servicePath['homePageContent'], data: data);
     if (response.statusCode == 200) {
       return response.data;
     } else {
@@ -21,7 +21,7 @@ Future getHomePageContext() async {
   }
 }
 
-Future request({url, formData = null, method = 'post'}) async {
+Future request({url, data = null, method = 'post'}) async {
   try {
     print('servic_method.dar。。。。。。');
     Response response;
@@ -32,22 +32,19 @@ Future request({url, formData = null, method = 'post'}) async {
     print('访问：${servicePath[url]} 接口');
 
     if (method == 'post') {
-      if (formData == null)
+      if (data == null)
         response = await dio.post(servicePath[url]);
       else
-        response = await dio.post(servicePath[url], data: formData);
+        response = await dio.post(servicePath[url], data: data);
     } else {
       String para = "";
-      if (formData != null) {
-        for (int me = 0; me < formData.keys.toList().length; me++) {
-          para += formData.keys.toList()[me] +
-              "=" +
-              formData[formData.keys.toList()[me]] +
-              "&";
+      if (data != null) {
+        for (int me = 0; me < data.keys.toList().length; me++) {
+          para +=
+              data.keys.toList()[me] + "=" + data[data.keys.toList()[me]] + "&";
         }
       }
       String getUrl = servicePath[url] + "?" + para;
-      print(getUrl);
       response = await dio.get(getUrl);
     }
     if (response.statusCode == 200) {

@@ -1,0 +1,145 @@
+{
+    "code": "0",
+    "message": "success",
+    "data": [{
+            "name": "海南木瓜2个",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200521163330_8517.gif",
+            "mallPrice": 9.90,
+            "goodsId": "ce9dee3f6ef84c6f83c6600084643b12",
+            "price": 13.60
+        },
+        {
+            "name": "双汇冻肋排段500g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200317154219_8743.jpg",
+            "mallPrice": 45.90,
+            "goodsId": "2bbe73c8f7774f0a916e9877b002b18a",
+            "price": 49.80
+        },
+        {
+            "name": "双汇冻五花肉丁500g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200317153803_5194.jpg",
+            "mallPrice": 39.90,
+            "goodsId": "f5cf95b9e3f842e5a6142a7139e21d4d",
+            "price": 43.90
+        },
+        {
+            "name": "双汇后腿肉丝500g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200317153903_3417.jpg",
+            "mallPrice": 39.90,
+            "goodsId": "d073be8643a24038b64a7ef40084eb61",
+            "price": 44.90
+        },
+        {
+            "name": "双汇冻五花肉片500g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200317154048_261.jpg",
+            "mallPrice": 39.90,
+            "goodsId": "7f601c543325404e9099c71dd1eb029c",
+            "price": 44.80
+        },
+        {
+            "name": "深海平鱼约900g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200315105458_6428.jpg",
+            "mallPrice": 35.90,
+            "goodsId": "52f7b9e8280e4cc291db1ecaba7bbc64",
+            "price": 39.80
+        },
+        {
+            "name": "国联东海白鲳鱼250g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200303112731_7722.jpg",
+            "mallPrice": 8.90,
+            "goodsId": "242d49e85c484c5db05585354a9b3a1c",
+            "price": 9.90
+        },
+        {
+            "name": "即食红极参400g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200303114008_221.jpg",
+            "mallPrice": 49.80,
+            "goodsId": "5b967c7984cb48f596b9bddb767efb5f",
+            "price": 68.00
+        },
+        {
+            "name": "糖糕",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200309173111_9792.jpg",
+            "mallPrice": 0.90,
+            "goodsId": "38b856b64b644f4b86330cb61ea713b0",
+            "price": 1.00
+        },
+        {
+            "name": "中粮香雪多用途麦芯粉5kg",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200217134804_2491.jpg",
+            "mallPrice": 29.80,
+            "goodsId": "94fb4adcb1bb47ad9dde501d8ec6bbc5",
+            "price": 39.90
+        },
+        {
+            "name": "冰露纯悦用矿物质水350ml* 12",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616112822_3470.jpg",
+            "mallPrice": 6.00,
+            "goodsId": "3aa7e032cc344f0aa67ebf17e592f1dc",
+            "price": 12.80
+        },
+        {
+            "name": "芬达汽水饮料300ml*12",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616110321_9763.jpg",
+            "mallPrice": 17.80,
+            "goodsId": "6dbb93b5f5484ec8851aaedf88310072",
+            "price": 24.00
+        },
+        {
+            "name": "芬达橙仔包330ml*6",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20180413090446_2971.jpg",
+            "mallPrice": 9.90,
+            "goodsId": "31eb95e4574743e2a75c354dd16306e7",
+            "price": 12.90
+        },
+        {
+            "name": "纯悦包装饮用水1.5L*2",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616112920_9376.jpg",
+            "mallPrice": 5.00,
+            "goodsId": "09716733a1954cbda510b7e6bf89fe05",
+            "price": 7.00
+        },
+        {
+            "name": "可口可乐仔包330ml*6",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20180413091911_2733.jpg",
+            "mallPrice": 9.90,
+            "goodsId": "a411a0bd155e4b75bffd69830cfe9e90",
+            "price": 12.90
+        },
+        {
+            "name": "可口可乐纯悦果水柠檬味饮料450ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616113027_738.jpg",
+            "mallPrice": 2.00,
+            "goodsId": "3b598e4627e442119a69a62f0caf3c2f",
+            "price": 2.80
+        },
+        {
+            "name": "可口可乐饮料300ml*12",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616105946_2247.jpg",
+            "mallPrice": 17.80,
+            "goodsId": "e21b2d9591c242ea8bd814be11037023",
+            "price": 24.00
+        },
+        {
+            "name": "可口可乐美汁源桃汁饮料420ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20200616111033_4630.jpg",
+            "mallPrice": 1.90,
+            "goodsId": "1229b797040b4efca9007b6504357dcc",
+            "price": 3.90
+        },
+        {
+            "name": "雪碧仔包330ml*6",
+            "image": "https://images.baixingliangfan.cn/shopGoodsImg/20200616/20200616115207_1494.jpg",
+            "mallPrice": 9.90,
+            "goodsId": "b489949bed374563af9eeb2aa64f5ce5",
+            "price": 12.90
+        },
+        {
+            "name": "红牛维生素饮料250ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20180103171914_4025.jpg",
+            "mallPrice": 4.90,
+            "goodsId": "04027793756e474182d10e8fdd21d9f5",
+            "price": 5.50
+        }
+    ]
+}

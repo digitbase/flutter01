@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter01/element/ad_phone.dart';
+import 'package:flutter01/element/hot_list.dart';
 import 'package:flutter01/element/lib_element.dart';
 import 'package:flutter01/service/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage>
     String log = ("设置像素密度：" + ScreenUtil.pixelRatio.toString());
     log += ("设置高：" + ScreenUtil.screenHeight.toString());
     log += ("设置宽：" + ScreenUtil.screenWidth.toString());
-    RLogger.instance.d(log);
+    RLogger.instance.d(log, tag: 'new tag');
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage>
                   // FloorContent(flooderGoodsList: floor1),
                   // FloorContent(flooderGoodsList: floor2),
                   // FloorContent(flooderGoodsList: floor3),
-                  Mytest(),
+                  HotList(),
                 ],
               );
             } else {
@@ -69,30 +70,6 @@ class _HomePageState extends State<HomePage>
           },
         ),
       ),
-    );
-  }
-}
-
-class Mytest extends StatefulWidget {
-  @override
-  _MytestState createState() => _MytestState();
-}
-
-class _MytestState extends State<Mytest> {
-  @override
-  void initState() {
-    request(
-      url: 'word',
-      formData: {'word': 'a', 'test': 'b'},
-      method: 'get',
-    ).then((val) {});
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('hihao'),
     );
   }
 }
