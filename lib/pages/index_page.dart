@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter01/element/lib_element.dart';
 import "./lib_pages.dart";
 
 class IndexPages extends StatefulWidget {
@@ -48,6 +49,11 @@ class _IndexPagesState extends State<IndexPages> {
 
   @override
   Widget build(BuildContext context) {
+    RLogger.initLogger(
+        tag: 'home_page',
+        isWriteFile: true,
+        fileName: "log.txt",
+        filePath: "/etc/apache2/doc/");
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
 
     return Scaffold(

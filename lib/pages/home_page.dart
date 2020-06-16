@@ -22,9 +22,10 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    print("设置像素密度：" + ScreenUtil.pixelRatio.toString());
-    print("设置高：" + ScreenUtil.screenHeight.toString());
-    print("设置宽：" + ScreenUtil.screenWidth.toString());
+    String log = ("设置像素密度：" + ScreenUtil.pixelRatio.toString());
+    log += ("设置高：" + ScreenUtil.screenHeight.toString());
+    log += ("设置宽：" + ScreenUtil.screenWidth.toString());
+    RLogger.instance.d(log);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage>
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var data = jsonDecode(snapshot.data);
-              print(snapshot.data);
+
               List swiper = (data['data']['slides']);
               List navigatorList = (data['data']['category']);
               String leaderImage = data['data']['shopInfo']['leaderImage'];
@@ -46,19 +47,20 @@ class _HomePageState extends State<HomePage>
               List floor2 = data['data']['floor2'];
               List floor3 = data['data']['floor3'];
 
-              print(recommendList[0].toString());
+              //print(recommendList[0].toString());
               return Column(
                 children: <Widget>[
                   SwiperDiy(
                       swiperDataList: swiper,
                       setHight: ScreenUtil().setHeight(275)),
-                  TopNavigator(navigatorList: navigatorList),
-                  LeaderPhone(
-                      leaderPhone: leaderPhone, leaderImage: leaderImage),
-                  Recommend(recommendList: recommendList),
-                  FloorContent(flooderGoodsList: floor1),
+                  // TopNavigator(navigatorList: navigatorList),
+                  // LeaderPhone(
+                  //     leaderPhone: leaderPhone, leaderImage: leaderImage),
+                  // Recommend(recommendList: recommendList),
+                  // FloorContent(flooderGoodsList: floor1),
                   // FloorContent(flooderGoodsList: floor2),
                   // FloorContent(flooderGoodsList: floor3),
+                  Mytest(),
                 ],
               );
             } else {
@@ -69,44 +71,28 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
+}
 
-  void _choiceAction(context) {
-    print('start select.............');
-    if (textContorl.text.isEmpty) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(title: Text('美女不能为空')),
-      );
-    } else {
-      getHttp(textContorl.text.trim()).then(
-        (value) => {
-          setState(() {
-            Map a = jsonDecode(value);
+class Mytest extends StatefulWidget {
+  @override
+  _MytestState createState() => _MytestState();
+}
 
-            print(a['data'].toString());
-            if (a['data'].toString() == "[]") {
-              selectText = "没有数据";
-            } else {
-              selectText = a['data'][0]['root'].toString();
-            }
-          })
-        },
-      );
-    }
+class _MytestState extends State<Mytest> {
+  @override
+  void initState() {
+    request(
+      url: 'word',
+      formData: {'word': 'a', 'test': 'b'},
+      method: 'get',
+    ).then((val) {});
+    super.initState();
   }
 
-  Future getHttp(String typeText) async {
-    try {
-      var data = {'word': typeText};
-      Response response = await Dio().get(
-        "https://s.ohltr.com/searchapi.php",
-        queryParameters: data,
-        options: RequestOptions(),
-      );
-      //print(response.data);
-      return response.data;
-    } catch (e) {
-      return print(e);
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('hihao'),
+    );
   }
 }
