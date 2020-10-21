@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import "package:provide/provide.dart";
+import '../provide/counter.dart';
 
 class MemberPage extends StatelessWidget {
   @override
@@ -8,7 +10,11 @@ class MemberPage extends StatelessWidget {
         title: Text('Member'),
       ),
       body: Container(
-        child: Text('会员中心'),
+        child: Provide<Counter>(
+          builder: (context, child, counter) {
+            return Text('${counter.value}');
+          },
+        ),
       ),
     );
   }
