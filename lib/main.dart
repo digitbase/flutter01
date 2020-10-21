@@ -4,12 +4,16 @@ import 'package:provide/provide.dart';
 import 'provide/counter.dart';
 import 'element/r_log.dart';
 import 'config/routers_cfg.dart';
+import 'provide/child_category.dart';
 
 void main() {
   var counter = Counter();
+  var childCategory = ChildCategory();
   var providers = Providers();
 
-  providers..provide(Provider<Counter>.value(counter));
+  providers
+    ..provide(Provider<Counter>.value(counter))
+    ..provide(Provider<ChildCategory>.value(childCategory));
   runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 
