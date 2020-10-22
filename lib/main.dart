@@ -5,15 +5,18 @@ import 'provide/counter.dart';
 import 'element/r_log.dart';
 import 'config/routers_cfg.dart';
 import 'provide/child_category.dart';
+import 'provide/child_category_goods.dart';
 
 void main() {
   var counter = Counter();
   var childCategory = ChildCategory();
+  var childCategoryGoods = ChildCategoryGoods();
   var providers = Providers();
 
   providers
     ..provide(Provider<Counter>.value(counter))
-    ..provide(Provider<ChildCategory>.value(childCategory));
+    ..provide(Provider<ChildCategory>.value(childCategory))
+    ..provide(Provider<ChildCategoryGoods>.value(childCategoryGoods));
   runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 

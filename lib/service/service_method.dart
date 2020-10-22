@@ -30,6 +30,7 @@ Future request({url, data = null, method = 'post'}) async {
         ContentType.parse('application/x-www-form-urlencoded').toString();
 
     print('访问：${servicePath[url]} 接口');
+    print('参数: ${data}');
 
     if (method == 'post') {
       if (data == null)
