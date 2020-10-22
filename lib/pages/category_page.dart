@@ -87,7 +87,8 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
           listIndex = index;
         });
         print('>>>>>>>>>${childListId}>>>>>>>>>>>>>');
-        Provide.value<ChildCategory>(context).getChildCategory(childList);
+        Provide.value<ChildCategory>(context)
+            .getChildCategory(childList, childListId);
         _getGoodsList(childListId);
       },
       child: Container(
@@ -141,7 +142,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
       });
 
       Provide.value<ChildCategory>(context)
-          .getChildCategory(list[0].bxMallSubDto);
+          .getChildCategory(list[0].bxMallSubDto, list[0].mallCategoryId);
     });
   }
 }
@@ -170,7 +171,7 @@ class __RightCategoryNavState extends State<_RightCategoryNav> {
             scrollDirection: Axis.horizontal,
             itemCount: cateList.length,
             itemBuilder: (context, index) {
-              return _rightInkWell(cateList[index]);
+              return _rightInkWell(index, cateList[index]);
             },
           ),
         );
@@ -178,14 +179,48 @@ class __RightCategoryNavState extends State<_RightCategoryNav> {
     );
   }
 
-  Widget _rightInkWell(BxMallSubDto item) {
+  Widget _rightInkWell(int index, BxMallSubDto item) {
+    bool isClick = false;
+    isClick = (index == Provide.value<ChildCategory>(context).childCategoryId)
+        ? true
+        : false;
+
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Provide.value<ChildCategory>(context)
+            .changeChildIndex(index, item.mallSubId);
+        _getGoodsList(item.mallSubId);
+      },
       child: Container(
         padding: EdgeInsets.fromLTRB(5.0, 15.0, 5.0, 10.0),
-        child: Text(item.mallSubName),
+        child: Text(
+          item.mallSubName,
+          style: TextStyle(
+              fontSize: ScreenUtil().setSp(28),
+              color: isClick ? Colors.pink : Colors.black),
+        ),
       ),
     );
+  }
+
+  void _getGoodsList(String subId) {
+    var data = {
+      'categoryId': Provide.value<ChildCategory>(context).childCategoryId,
+      'CategorySubId': subId,
+      'page': 1,
+    };
+
+    request(url: 'getMallGoods', data: data).then((val) {
+      var data = jsonDecode(val.toString());
+      CategoryGoods goodlist = CategoryGoods.fromJson(data);
+      print(goodlist.data[0].goodsName);
+
+      Provide.value<ChildCategoryGoods>(context)
+          .getCategoryGoods(goodlist.data);
+
+      // list = goodlist.data;
+      //RLogger.instance.d(data, tag: 'CategoryGoodsList');
+    });
   }
 }
 
