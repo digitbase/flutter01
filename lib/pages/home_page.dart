@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage>
                   // FloorContent(flooderGoodsList: floor1),
                   // FloorContent(flooderGoodsList: floor2),
                   // FloorContent(flooderGoodsList: floor3),
-                  //HotList(),
+                  HotList(),
                 ],
               );
             } else {

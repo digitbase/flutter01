@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter01/element/lib_element.dart';
 import 'package:flutter01/pages/lib_pages.dart';
 import 'package:flutter01/service/service_method.dart';
+import '../routers/application.dart';
 
 class HotList extends StatefulWidget {
   @override
@@ -43,7 +44,13 @@ class _HotListState extends State<HotList> {
     listWidget = goodsList.map((val) {
       //RLogger.instance.d("message");
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          print(val);
+          Application.router.navigateTo(
+            context,
+            '/detail?id=${val['goodsId']}',
+          );
+        },
         child: Container(
           width: ScreenUtil().setWidth(372),
           margin: EdgeInsets.only(bottom: 3),
