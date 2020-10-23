@@ -10,4 +10,10 @@ class ChildCategoryGoods with ChangeNotifier {
     goodsList = list;
     notifyListeners();
   }
+
+  getMoreCategoryGoods(List<dynamic> list) {
+    //print(list.toString());
+    goodsList.addAll(list);
+    notifyListeners();
+  }
 }

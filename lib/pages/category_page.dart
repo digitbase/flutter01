@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:provide/provide.dart";
 import '../provide/child_category.dart';
 import '../provide/child_category_goods.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -121,10 +123,14 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
     await request(url: 'getMallGoods', data: data).then((val) {
       var data = jsonDecode(val.toString());
       CategoryGoods goodlist = CategoryGoods.fromJson(data);
-      print(goodlist.data[0].goodsName);
+      //print(goodlist.data[0].goodsName);
 
-      Provide.value<ChildCategoryGoods>(context)
-          .getCategoryGoods(goodlist.data);
+      if (goodlist.data == null) {
+        Provide.value<ChildCategoryGoods>(context).getCategoryGoods([]);
+      } else {
+        Provide.value<ChildCategoryGoods>(context)
+            .getCategoryGoods(goodlist.data);
+      }
 
       // list = goodlist.data;
       //RLogger.instance.d(data, tag: 'CategoryGoodsList');
@@ -213,10 +219,13 @@ class __RightCategoryNavState extends State<_RightCategoryNav> {
     request(url: 'getMallGoods', data: data).then((val) {
       var data = jsonDecode(val.toString());
       CategoryGoods goodlist = CategoryGoods.fromJson(data);
-      print(goodlist.data[0].goodsName);
 
-      Provide.value<ChildCategoryGoods>(context)
-          .getCategoryGoods(goodlist.data);
+      if (goodlist.data == null) {
+        Provide.value<ChildCategoryGoods>(context).getCategoryGoods([]);
+      } else {
+        Provide.value<ChildCategoryGoods>(context)
+            .getCategoryGoods(goodlist.data);
+      }
 
       // list = goodlist.data;
       //RLogger.instance.d(data, tag: 'CategoryGoodsList');
@@ -234,24 +243,77 @@ class CategoryGoodsList extends StatefulWidget {
 class _CategoryGoodsListState extends State<CategoryGoodsList> {
   List list = [];
 
+  var scrollController = new ScrollController();
+
   @override
   Widget build(BuildContext context) {
     RLogger.instance.d('开始', tag: 'CategoryGoodsList');
 
     return Provide<ChildCategoryGoods>(
         builder: (context, child, childCategoryGoods) {
+      try {
+        if (Provide.value<ChildCategory>(context).page == 1) {
+          scrollController.jumpTo(0.0);
+        }
+      } catch (e) {
+        print('第一次');
+      }
+
       List data = childCategoryGoods.goodsList;
 
-      return Container(
-        width: ScreenUtil().setWidth(570),
-        height: ScreenUtil().setHeight(900),
-        child: ListView.builder(
-          itemCount: childCategoryGoods.goodsList.length,
-          itemBuilder: (context, index) {
-            return _listWidget(childCategoryGoods.goodsList, index);
-          },
+      return Expanded(
+        child: Container(
+          width: ScreenUtil().setWidth(570),
+          height: ScreenUtil().setHeight(1000),
+          child: EasyRefresh(
+            child: ListView.builder(
+              controller: scrollController,
+              itemCount: childCategoryGoods.goodsList.length,
+              itemBuilder: (context, index) {
+                return _listWidget(childCategoryGoods.goodsList, index);
+              },
+            ),
+            footer: ClassicalFooter(
+              loadingText: '加载更多...',
+              loadReadyText: '准备加载...',
+              loadedText: "加载完成...",
+              noMoreText: '没有更多....',
+              bgColor: Colors.blue[50],
+            ),
+            onLoad: () async {
+              print('开始加载更多.........');
+              Provide.value<ChildCategory>(context).setPageAdd();
+              _getMoreGoodsList();
+            },
+          ),
         ),
       );
+    });
+  }
+
+  void _getMoreGoodsList() async {
+    var data = {
+      'categoryId': Provide.value<ChildCategory>(context).categoryId,
+      'CategorySubId': Provide.value<ChildCategory>(context).subId,
+      'page': Provide.value<ChildCategory>(context).page,
+    };
+
+    await request(url: 'getMallGoods', data: data).then((val) {
+      var data = jsonDecode(val.toString());
+      CategoryGoods goodlist = CategoryGoods.fromJson(data);
+
+      if (goodlist.data == null) {
+        Fluttertoast.showToast(
+          msg: "已纪到底了",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.pink,
+        );
+        Provide.value<ChildCategory>(context).setNoMoreText("没有更多了..");
+      } else {
+        Provide.value<ChildCategoryGoods>(context)
+            .getMoreCategoryGoods(goodlist.data);
+      }
     });
   }
 

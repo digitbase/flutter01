@@ -7,14 +7,18 @@ class ChildCategory with ChangeNotifier {
   int childCategoryId = 0;
   String categoryId = '2c9f6c946cd22d7b016cd74220b70040';
   String subId = '';
+  int page = 1;
+  String noMoreText = '';
 
   getChildCategory(List<dynamic> list, String id) {
     BxMallSubDto all = new BxMallSubDto();
-    all.mallCategoryId = '00';
+    all.mallCategoryId = '';
     all.mallSubName = "全部";
     all.comments = 'null';
     all.mallSubId = '00';
 
+    page = 1;
+    noMoreText = '';
     categoryId = id;
     childCategoryId = 0;
     childCategoryList = [all];
@@ -23,8 +27,20 @@ class ChildCategory with ChangeNotifier {
   }
 
   changeChildIndex(index, String id) {
+    page = 1;
+    noMoreText = '';
     childCategoryId = index;
     subId = id;
+    notifyListeners();
+  }
+
+  setPageAdd() {
+    page++;
+    print(page);
+  }
+
+  setNoMoreText(String text) {
+    noMoreText = text;
     notifyListeners();
   }
 }
