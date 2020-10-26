@@ -45,7 +45,6 @@ class _HotListState extends State<HotList> {
       //RLogger.instance.d("message");
       return InkWell(
         onTap: () {
-          print(val);
           Application.router.navigateTo(
             context,
             '/detail?id=${val['goodsId']}',

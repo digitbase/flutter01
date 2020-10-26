@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import "dart:io";
 import "../config/service_url.dart";
+import '../element/r_log.dart';
 
 Future getHomePageContext() async {
   try {
@@ -23,13 +24,13 @@ Future getHomePageContext() async {
 
 Future request({url, data = null, method = 'post'}) async {
   try {
-    print('servic_method.dar。。。。。。');
+    print('=====================servicemethod.dar=================');
     Response response;
     Dio dio = new Dio();
     dio.options.contentType =
         ContentType.parse('application/x-www-form-urlencoded').toString();
 
-    print('访问：${servicePath[url]} 接口');
+    print('request访问：${servicePath[url]} 接口');
     print('参数: ${data}');
 
     if (method == 'post') {
@@ -48,7 +49,11 @@ Future request({url, data = null, method = 'post'}) async {
       String getUrl = servicePath[url] + "?" + para;
       response = await dio.get(getUrl);
     }
+
     if (response.statusCode == 200) {
+      int sleng = response.data.toString().length;
+      RLogger.instance.d(response.data, tag: '==${url}==');
+      print('=========================end=================');
       return response.data;
     } else {
       throw Exception('后端接口出现异常');
