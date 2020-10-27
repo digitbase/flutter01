@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage>
     String log = ("设置像素密度：" + ScreenUtil.pixelRatio.toString());
     log += ("设置高：" + ScreenUtil.screenHeight.toString());
     log += ("设置宽：" + ScreenUtil.screenWidth.toString());
-    RLogger.instance.d(log, tag: 'new tag');
+    //RLogger.instance.d(log, tag: 'new tag');
 
     return Scaffold(
       appBar: AppBar(

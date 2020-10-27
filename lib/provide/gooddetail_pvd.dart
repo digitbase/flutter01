@@ -6,9 +6,9 @@ import 'dart:convert';
 class GoodDetailProvide with ChangeNotifier {
   DetailsModel goodsInfo = null;
 
-  getGoodsInfo(String id) {
+  Future getGoodsInfo(String id) async {
     var formData = {'good': id};
-    request(
+    await request(
       url: 'getGoodDetailById',
       data: formData,
     ).then((value) {
@@ -18,7 +18,7 @@ class GoodDetailProvide with ChangeNotifier {
       // print(responseData);
 
       goodsInfo = DetailsModel.fromJson(responseData);
-
+      print('得到商品ID: ' + goodsInfo.data.goodInfo.goodsId);
       notifyListeners();
     });
   }

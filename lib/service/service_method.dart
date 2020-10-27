@@ -52,7 +52,7 @@ Future request({url, data = null, method = 'post'}) async {
 
     if (response.statusCode == 200) {
       int sleng = response.data.toString().length;
-      RLogger.instance.d(response.data, tag: '==${url}==');
+      //RLogger.instance.d(response.data, tag: '==${url}==');
       print('=========================end=================');
       return response.data;
     } else {

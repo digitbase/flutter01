@@ -1,7 +1,12 @@
 # This is a generated file; do not edit or check into version control.
 fluttertoast=/Users/apple/.pub-cache/hosted/pub.dartlang.org/fluttertoast-7.1.1/
+screen=/Users/apple/.pub-cache/hosted/pub.dartlang.org/screen-0.0.5/
 url_launcher=/Users/apple/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.7.5/
 url_launcher_linux=/Users/apple/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-0.0.1+1/
 url_launcher_macos=/Users/apple/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+8/
 url_launcher_web=/Users/apple/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.4+1/
 url_launcher_windows=/Users/apple/.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-0.0.1+1/
+video_player=/Users/apple/.pub-cache/hosted/pub.dartlang.org/video_player-0.10.12+5/
+video_player_web=/Users/apple/.pub-cache/hosted/pub.dartlang.org/video_player_web-0.1.4/
+wakelock=/Users/apple/.pub-cache/hosted/pub.dartlang.org/wakelock-0.1.4+2/
+webview_flutter=/Users/apple/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.24/

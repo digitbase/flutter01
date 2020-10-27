@@ -7,6 +7,17 @@ class DetailInfoProvide with ChangeNotifier {
   DetailsModel goodsInfo = null;
   String goodsId = '';
 
+  bool isLeft = true;
+
+  changeLeft(String leftState) {
+    if (leftState == 'left') {
+      isLeft = true;
+    } else {
+      isLeft = false;
+    }
+    notifyListeners();
+  }
+
   getGoodsInfo(String id) {
     var formData = {'goodId': id};
     request(url: 'getGoodDetailById', data: formData).then((val) {

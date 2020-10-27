@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
 import '../provide/gooddetail_pvd.dart';
+import 'details_top_area.dart';
 
 class DetailsPage extends StatelessWidget {
   final String goodsId;
@@ -22,7 +23,15 @@ class DetailsPage extends StatelessWidget {
         future: _getBackInfo(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Container(
+            return Stack(
+              children: [
+                Container(
+                  child: DetailsTopArea(),
+                ),
+              ],
+            );
+
+            Container(
               child: Column(
                 children: [
                   Text('ddd'),
@@ -36,6 +45,7 @@ class DetailsPage extends StatelessWidget {
   }
 
   Future _getBackInfo(BuildContext context) async {
+    print('_getBackInfo');
     await Provide.value<GoodDetailProvide>(context).getGoodsInfo(goodsId);
     return "完成加载";
   }
