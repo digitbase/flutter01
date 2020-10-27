@@ -43,7 +43,7 @@ class DataCategory {
       this.image});
 
   factory DataCategory.fromJson(Map<String, dynamic> json) {
-    RLogger.instance.d(json['mallCategoryName'], tag: 'DataCategory tag');
+    //RLogger.instance.d(json['mallCategoryName'], tag: 'DataCategory tag');
     return DataCategory(
       mallCategoryId: json['mallCategoryId'],
       mallCategoryName: json['mallCategoryName'],

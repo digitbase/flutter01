@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter01/provide/counter.dart';
 import "package:provide/provide.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class CartPage extends StatelessWidget {
   @override

@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter01/provide/gooddetail_pvd.dart';
 import 'package:provide/provide.dart';
@@ -8,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'detail_tabbar.dart';
 import 'detail_web.dart';
+import 'details_bottom.dart';
 
 class DetailsTopArea extends StatelessWidget {
   @override
@@ -16,13 +15,24 @@ class DetailsTopArea extends StatelessWidget {
       builder: (context, child, val) {
         var goodsInfo = Provide.value<GoodDetailProvide>(context).goodsInfo;
 
-        return ListView(
+        return Stack(
           children: [
-            _goodsImage(goodsInfo.data.goodInfo.image1),
-            _goodsName(goodsInfo.data.goodInfo.goodsName),
-            _goodsNum(goodsInfo.data.goodInfo.presentPrice.toString()),
-            DetailsTabbar(),
-            DateailWeb(),
+            Container(
+              child: ListView(
+                children: [
+                  _goodsImage(goodsInfo.data.goodInfo.image1),
+                  _goodsName(goodsInfo.data.goodInfo.goodsName),
+                  _goodsNum(goodsInfo.data.goodInfo.presentPrice.toString()),
+                  DetailsTabbar(),
+                  DateailWeb(),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: DetailsBottom(),
+            )
           ],
         );
       },
