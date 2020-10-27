@@ -32,7 +32,7 @@ dependencies:
   fluttertoast: ^7.1.1
   fluro: ^1.7.6
   flutter_html: ^1.0.0
-  shared_preferences: ^0.5.1
+  shared_preferences: ^0.5.4
 
 dev_dependencies:
   flutter_test:
