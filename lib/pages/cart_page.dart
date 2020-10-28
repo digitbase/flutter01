@@ -10,9 +10,12 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List testList = [];
+  List<String> testList = [];
+
   @override
   Widget build(BuildContext context) {
+    _show();
+
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -24,9 +27,6 @@ class _CartPageState extends State<CartPage> {
           children: [
             RaisedButton(
               onPressed: () {
-                // setState(() {
-                //   testList.add('ni');
-                // });
                 _add();
                 print(testList);
               },
@@ -43,9 +43,7 @@ class _CartPageState extends State<CartPage> {
               child: ListView.builder(
                 itemCount: testList.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(testList[index]),
-                  );
+                  return Text(testList[index]);
                 },
               ),
             ),
@@ -57,31 +55,31 @@ class _CartPageState extends State<CartPage> {
 
   Future _add() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String temp = "this is test";
+    String temp = "this is test32";
+    testList.add(temp);
+    prefs.setStringList('testInfo', testList);
 
-    //prefs.setStringList('testInfo', testList);
-    setState(() {
-      testList.add(temp);
-    });
+    _show();
   }
 
   void _show() async {
+    print('_show() is here');
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getStringList('testInfo') != null) {
       setState(() {
         testList = prefs.getStringList("testInfo");
       });
+    } else {
+      setState(() {
+        testList = [];
+      });
     }
   }
 
   void _clear() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // if (prefs.getStringList('testInfo') != null) {
-    //   prefs.remove("testInfo");
-    setState(() {
-      testList = [];
-    });
-    // }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('testInfo');
+    _show();
   }
 }
 
