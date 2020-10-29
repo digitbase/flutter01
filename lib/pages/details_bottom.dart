@@ -17,7 +17,9 @@ class DetailsBottom extends StatelessWidget {
       child: Row(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              print('add goods');
+            },
             child: Container(
               width: ScreenUtil().setWidth(110),
               alignment: Alignment.center,
@@ -29,7 +31,9 @@ class DetailsBottom extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              print('add2 buy');
+            },
             child: Container(
               width: ScreenUtil().setWidth(320),
               alignment: Alignment.center,
@@ -44,7 +48,9 @@ class DetailsBottom extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              print('just buy');
+            },
             child: Container(
               width: ScreenUtil().setWidth(320),
               alignment: Alignment.center,
