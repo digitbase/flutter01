@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter01/pages/lib_pages.dart';
 import 'package:provide/provide.dart';
+import 'provide/cart_provider.dart';
 import 'provide/counter.dart';
 import 'element/r_log.dart';
 import 'config/routers_cfg.dart';
@@ -19,11 +20,13 @@ void main() {
   var providers = Providers();
   var goodDetailPvd = GoodDetailProvide();
   var detailInfoProvide = DetailInfoProvide();
+  var cartPrivde = CarProvide();
 
   providers
     ..provide(Provider<Counter>.value(counter))
     ..provide(Provider<ChildCategory>.value(childCategory))
     ..provide(Provider<GoodDetailProvide>.value(goodDetailPvd))
+    ..provide(Provider<CarProvide>.value(cartPrivde))
     ..provide(Provider<DetailInfoProvide>.value(detailInfoProvide))
     ..provide(Provider<ChildCategoryGoods>.value(childCategoryGoods));
   runApp(ProviderNode(child: MyApp(), providers: providers));

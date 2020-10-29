@@ -7,10 +7,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DetailsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var goodsInfo = Provide.value<DetailInfoProvide>(context).goodsInfo;
+
     return Container(
       //color: Colors.,
       width: ScreenUtil().setWidth(750),
       height: ScreenUtil().setHeight(80),
+      color: Colors.white,
       child: Row(
         children: [
           InkWell(
